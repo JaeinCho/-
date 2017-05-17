@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.chocho64.clanner.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.chocho64.mapiary.MainActivity">
 
-    <TabHost
-        android:id="@android:id/tabhost"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+        <!--Toolbar : 툴바-->
+        <!--android:elevation : 객체의 z값을 올려준다-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/colorAccent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titleText"
+                android:textSize="16dp"
+                android:text="일기"
+                android:textAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
+        <!--//Toolbar-->
+
+        <!--TabLayout : 탭-->
+        <!--app:tabMode="fixed" , app:tabGravity="fill" : 탭너비 동일하게-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabTextColor="#cccccc"
+            app:tabSelectedTextColor="@color/colorAccent"
+            android:elevation="1dp"
+            android:background="@android:color/background_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--//TabLayout-->
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <TabWidget
-                android:background="@color/colorPrimary"
-                android:id="@android:id/tabs"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"/>
-        </LinearLayout>
-    </TabHost>
-</LinearLayout>
+            android:background="#cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+    </android.support.design.widget.AppBarLayout>
+    <!--//AppBarLayout-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>
